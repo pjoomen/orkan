@@ -1,6 +1,6 @@
 # Kubernetes assets (kubeconfig, manifests)
 module "bootstrap" {
-  source = "git::https://github.com/pjoomen/terraform-render-bootstrap.git?ref=9bc0851"
+  source = "git::https://github.com/pjoomen/terraform-render-bootstrap.git?ref=f0d12f6"
 
   cluster_name          = var.cluster_name
   api_virtual_ip        = openstack_networking_port_v2.kube-apiserver-vip.all_fixed_ips[0]

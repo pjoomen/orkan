@@ -13,15 +13,15 @@ output "apiserver_url" {
 }
 
 output "client_certificate" {
-  value = format("%s/tls/admin.crt", var.asset_dir)
+  value = module.bootstrap.admin_cert
 }
 
 output "client_key" {
-  value = format("%s/tls/admin.key", var.asset_dir)
+  value = module.bootstrap.admin_key
 }
 
 output "cluster_ca_certificate" {
-  value = format("%s/tls/ca.crt", var.asset_dir)
+  value = module.bootstrap.admin_ca_cert
 }
 
 # Outputs for worker pools
