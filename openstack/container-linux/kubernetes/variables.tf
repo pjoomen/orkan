@@ -8,6 +8,11 @@ variable "dns_zone" {
   description = "DNS Zone (e.g. google-cloud.example.com)"
 }
 
+variable "api_server_san" {
+  type        = string
+  description = "X509v3 Subject Alternative Name to add to API server certificate"
+}
+
 variable "ca_private_key" {
   # type        = string
   description = "The private key to use for the Certificate Authority"

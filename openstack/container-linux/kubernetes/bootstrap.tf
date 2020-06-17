@@ -4,7 +4,7 @@ module "bootstrap" {
 
   cluster_name          = var.cluster_name
   api_virtual_ip        = openstack_networking_port_v2.kube-apiserver-vip.all_fixed_ips[0]
-  api_servers           = [format("%s.%s", var.cluster_name, var.dns_zone)]
+  api_servers           = [format("%s.%s", var.cluster_name, var.dns_zone), var.dns_zone, var.api_server_san]
   ca_private_key        = var.ca_private_key
   ca_certificate        = var.ca_certificate
   etcd_servers          = data.template_file.controllernames.*.rendered
