@@ -8,6 +8,16 @@ variable "dns_zone" {
   description = "DNS Zone (e.g. google-cloud.example.com)"
 }
 
+variable "ca_private_key" {
+  # type        = string
+  description = "The private key to use for the Certificate Authority"
+}
+
+variable "ca_certificate" {
+  # type        = string
+  description = "The self-signed certicate to use for the Certificate Authority"
+}
+
 # OpenStack
 
 variable "network_id" {
