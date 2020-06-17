@@ -2,6 +2,7 @@
 resource "openstack_networking_port_v2" "controller-ports" {
   count      = var.controller_count
   name       = "${var.cluster_name}-controller-${count.index}"
+  tags       = [var.cluster_name]
   network_id = var.network_id
   security_group_ids = [
     openstack_networking_secgroup_v2.mgmt.id,
@@ -15,6 +16,7 @@ resource "openstack_networking_port_v2" "controller-ports" {
 resource "openstack_networking_port_v2" "controller-vrf-ports" {
   count      = var.controller_count
   name       = "${var.cluster_name}-controller-vrf-${count.index}"
+  tags       = [var.cluster_name]
   network_id = var.vrf_networks[element(var.availability_zones, count.index)]
   security_group_ids = [
     "3a4a1481-cfb0-4718-85cb-9bd43026444d",
@@ -30,6 +32,7 @@ resource "openstack_networking_port_v2" "controller-vrf-ports" {
 resource "openstack_compute_instance_v2" "controllers" {
   count             = var.controller_count
   name              = "${var.cluster_name}-controller-${count.index}"
+  tags              = [var.cluster_name]
   flavor_name       = var.controller_type
   image_name        = var.os_image
   user_data         = element(data.ct_config.controller-ignitions.*.rendered, count.index)

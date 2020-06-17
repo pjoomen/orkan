@@ -39,6 +39,7 @@ resource "openstack_networking_floatingip_associate_v2" "kube-apiserver-vip" {
 
 resource "openstack_networking_secgroup_v2" "mgmt" {
   name = "mgmt"
+  tags = [var.cluster_name]
 }
 
 resource "openstack_networking_secgroup_rule_v2" "remote_group_v6" {
@@ -67,6 +68,7 @@ resource "openstack_networking_secgroup_rule_v2" "ipv6_ssh" {
 
 resource "openstack_networking_secgroup_v2" "controller" {
   name = "controller"
+  tags = [var.cluster_name]
 }
 
 resource "openstack_networking_secgroup_rule_v2" "kube-apiserver-vip" {
