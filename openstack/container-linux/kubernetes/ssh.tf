@@ -77,6 +77,7 @@ resource "null_resource" "copy-worker-secrets" {
 
 # Connect to a controller to perform one-time cluster bootstrap.
 resource "null_resource" "bootstrap" {
+  count = var.controller_count > 0 ? 1 : 0
   depends_on = [
     null_resource.copy-controller-secrets,
     null_resource.copy-worker-secrets,
